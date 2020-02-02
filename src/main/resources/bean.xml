@@ -53,10 +53,13 @@
         -->
     <!--配置aop-->
     <aop:config>
+        <!--配置通用的切点-->
+        <aop:pointcut id="po" expression="execution( * com.ping.impl.*.*(..))"></aop:pointcut>
         <!--配置切面,包括切入点和通知 -->
         <aop:aspect id="logAdvice" ref="pringLog">
             <!-- 配置通知的类型，并且建立通知方法和切入点方法的关联-->
-             <aop:before method="printLog" pointcut="execution( * com.ping.impl.*.*(..))"></aop:before>
+            <aop:before method="printLog" pointcut-ref="po"></aop:before>
+            <!-- <aop:before method="printLog" pointcut="execution( * com.ping.impl.*.*(..))"></aop:before>-->
         </aop:aspect>
     </aop:config>
 </beans>
